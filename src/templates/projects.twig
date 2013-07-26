@@ -9,10 +9,15 @@
         <ul id="projects">
             {% for i, project in projects %}
                 <li class="{{ project.statuscode }}">
-                    <div class="status">{{ project.status }}</div>
+                    <div class="status">
                     <a href="{{ path('project', { 'slug': project.slug }) }}">
+                        {{ project.status }}
+                    </a>
+                    </div>
+                    {% if project.url %}<a href="{{ project.url }}">{% endif %}
                         {{ project.shortname }}
                         {% if project.subname %}<small> &mdash; {{ project.subname }}</small>{% endif %}
+                    {% if project.url %}</a>{% endif %}
                     </a>
                </li>
             {% endfor %}
